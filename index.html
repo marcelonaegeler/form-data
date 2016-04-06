@@ -2,23 +2,44 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
+	<meta id="csrf_token" content="123">
+
 	<title>Form</title>
+	<style>
+	.error input {
+		border-color: red;
+	}
+	</style>
 </head>
 <body>
 
-	<form action="" id="form">
+	<form action="teste" id="form" method="POST">
 
-		<input type="text" name="nome[]" value="Marceç<p></p>">
-		<input type="text" name="nome[]" value="André">
-		<input type="text" name="nome">
-		<input type="text" id="nome" value="teste">
-
+		<div>
+			<input type="text" name="nome[]">
+		</div>
+		<div>
+			<input type="email" name="email">
+		</div>
+		<div>
+			<input type="text" name="nome[]" id="nome">
+		</div>
+		<div>
+			<button type="submit" data-disabled-html="Enviando...">Enviar</button>
+		</div>
+		
 	</form>
 
+	<script src="Ajax.js"></script>
 	<script src="form.js"></script>
 
 	<script>
-	console.log( Form.retrieve( document.getElementById( 'form' ) ) );
+	Form.submit( 
+		document.getElementById( 'form' )
+		, function ( res ) {
+			console.log( res );
+		}
+	);
 	</script>
 </body>
 </html>
